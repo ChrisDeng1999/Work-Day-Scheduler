@@ -1,5 +1,8 @@
 // moment format with day and month day of moment().format(dddd MM DD)
 
+var todaysDate = moment().format("dddd MMMM, Do");
+$("#currentDay").text(todaysDate);
+
 //reference the paragraph for current day
 //save buttons - add class and add eventListeners on all save buttons
 
@@ -32,3 +35,4 @@
 //textarea set the value to local.storage getItem('hour-9')
 
 //setInterval to run the fucntion of hourcolor updating function every 15-30 seconds
+
