@@ -1,14 +1,22 @@
 var taskInputEl = $("textarea");
+var time = moment().format("hh:mm:ss a");
 
+// var todaysDate = moment().format("dddd MMMM, Do");
+// $("#currentDay").text("Today's Date is " + todaysDate);
 
-var todaysDate = moment().format("dddd MMMM, Do");
-$("#currentDay").text(todaysDate);
-
-$(".saveBtn").on("click", saveTask)
+// $(".saveBtn").on("click", saveTask)
 
 //reference the paragraph for current day
 //save buttons - add class and add eventListeners on all save buttons
+var currentTime = moment().hour();
+console.log(currentTime);
 
+function todaysDate() {
+    var day = moment().format("dddd MMMM, Do");
+    $("#currentDay").text("Today's Date is " + day + " at " + time);
+}
+todaysDate()
+setInterval(todaysDate, 1000)
 
 
 //save task function
@@ -19,7 +27,7 @@ $(".saveBtn").on("click", saveTask)
 
 function saveTask() {
     console.log("hello")
-    if 
+     
 }
 
 
