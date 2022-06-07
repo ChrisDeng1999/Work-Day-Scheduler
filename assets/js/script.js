@@ -3,10 +3,17 @@
 var todaysDate = moment().format("dddd MMMM, Do");
 $("#currentDay").text(todaysDate);
 
+$(".saveBtn").on("click", saveTask)
+
+function saveTask() {
+    console.log("hello")
+}
+
+
 //reference the paragraph for current day
 //save buttons - add class and add eventListeners on all save buttons
 
-//$.("saveBtn").on("click", function to save to LS)
+
 
 //save task function
 //store this value as a variablereference the tex area and grab the value
