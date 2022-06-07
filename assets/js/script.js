@@ -1,14 +1,10 @@
-// moment format with day and month day of moment().format(dddd MM DD)
+var taskInputEl = $("textarea");
+
 
 var todaysDate = moment().format("dddd MMMM, Do");
 $("#currentDay").text(todaysDate);
 
 $(".saveBtn").on("click", saveTask)
-
-function saveTask() {
-    console.log("hello")
-}
-
 
 //reference the paragraph for current day
 //save buttons - add class and add eventListeners on all save buttons
@@ -21,7 +17,20 @@ function saveTask() {
 //use the sibling method to target the textarea
 //use parent to target the specific hour based on the id
 
+function saveTask() {
+    console.log("hello")
+    if 
+}
+
+
+
+
 //local.storage set time as key and value as textarea text (setItem)
+
+
+
+
+
 
 //function for updating hour colors
 //grab current hour with moment.js moment().hours() military time = currentTime
