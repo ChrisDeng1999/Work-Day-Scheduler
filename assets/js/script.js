@@ -1,5 +1,3 @@
-var taskInputEl = $("textarea");
-var currentTime = parseInt(moment().hour());
 
 
 
@@ -7,6 +5,7 @@ function hourStatus() {
   for (let i = 9; i < 18 ; i++) {
     var element = $("#"+i);
     var staticTime = element.attr("data-hour")
+    var currentTime = parseInt(moment().hour());
     if(staticTime > currentTime) {
       element.addClass("future");
     } else if (staticTime < currentTime) {
@@ -18,15 +17,6 @@ function hourStatus() {
 }
 
 
-
-
-// var todaysDate = moment().format("dddd MMMM, Do");
-// $("#currentDay").text("Today's Date is " + todaysDate);
-
-
-//reference the paragraph for current day
-//save buttons - add class and add eventListeners on all save buttons
-
 function todaysDate() {
   var day = moment().format("dddd MMMM, Do");
   var time = moment().format("hh:mm:ss a");
@@ -37,17 +27,43 @@ todaysDate();
 hourStatus();
 setInterval(todaysDate, 1000);
 setInterval(hourStatus, 15000);
-console.log(time);
 
 
 
-$(".saveBtn").on("click", saveTask)
-function saveTask() {
-  console.log("hello");
+
+
+$(".time-block").on("click", "button", saveToLocal)
+
+function saveToLocal (event) {
+  var element = event.target
+  var hour = $(element).siblings(".hour").attr("data-hour")
+  var task = $(element).siblings("textarea").val()
+
+  localStorage.setItem(hour, task)
+  console.log($(element).siblings(".hour").attr("id"))
 }
 
-//local.storage set time as key and value as textarea text (setItem)
 
+
+
+
+
+
+
+
+//local.storage set time as key and value as textarea text (setItem)
+// function fadeText() {
+// // $("#savedEvent").show();
+// // setTimeout(function() {
+// //   // event.preventDefault();
+// //   $("#savedEvent").hide(); 
+
+// // }, 5000);
+
+//   $("#savedEvent").show().delay(5000).hide();
+
+// }
+// $(".saveBtn").on("click", fadeText)
 //function for updating hour colors
 //grab current hour with moment.js moment().hours() military time = currentTime
 //loop that goes through all time blocks and then run a condition statemnt to compare current hour to each time block
