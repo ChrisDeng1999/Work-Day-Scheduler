@@ -1,10 +1,7 @@
-
-
-
 function hourStatus() {
   for (let i = 9; i < 18 ; i++) {
     var element = $("#"+i);
-    var staticTime = element.attr("data-hour")
+    var staticTime = element.attr("id")
     var currentTime = parseInt(moment().hour());
     if(staticTime > currentTime) {
       element.addClass("future");
@@ -29,41 +26,46 @@ setInterval(todaysDate, 1000);
 setInterval(hourStatus, 15000);
 
 
-
-
-
-$(".time-block").on("click", "button", saveToLocal)
-
 function saveToLocal (event) {
   var element = event.target
   var hour = $(element).siblings(".hour").attr("data-hour")
   var task = $(element).siblings("textarea").val()
 
+
   localStorage.setItem(hour, task)
-  console.log($(element).siblings(".hour").attr("id"))
+  console.log(task)
+
 }
 
 
+function grabData () {
 
+  for (var key in localStorage){
+    console.log(localStorage.getItem(key))
+    if (localStorage.getItem(key) !== null) {
+      $("#" + key).append(localStorage.getItem(key))
+    }  
+    if (localStorage.getItem(key) === "undefined") {
+      $("#" + key).text("You need to save your task!")
+    }  
+  }
+}
 
+grabData();
 
+$(".saveBtn").on("click", saveToLocal)
 
 
 
 
 //local.storage set time as key and value as textarea text (setItem)
-// function fadeText() {
-// // $("#savedEvent").show();
-// // setTimeout(function() {
-// //   // event.preventDefault();
-// //   $("#savedEvent").hide(); 
+function fadeText() {
 
-// // }, 5000);
+$("#savedEvent").removeClass("hide")
+  // event.preventDefault();
+}
+$(".saveBtn").on("click", fadeText)
 
-//   $("#savedEvent").show().delay(5000).hide();
-
-// }
-// $(".saveBtn").on("click", fadeText)
 //function for updating hour colors
 //grab current hour with moment.js moment().hours() military time = currentTime
 //loop that goes through all time blocks and then run a condition statemnt to compare current hour to each time block
