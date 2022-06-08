@@ -13,7 +13,6 @@ function hourStatus() {
   }
 }
 
-
 function todaysDate() {
   var day = moment().format("dddd MMMM, Do");
   var time = moment().format("hh:mm:ss a");
@@ -25,7 +24,6 @@ hourStatus();
 setInterval(todaysDate, 1000);
 setInterval(hourStatus, 15000);
 
-
 function saveToLocal (event) {
   var element = event.target
   var hour = $(element).siblings(".hour").attr("data-hour")
@@ -36,7 +34,6 @@ function saveToLocal (event) {
   console.log(task)
 
 }
-
 
 function grabData () {
 
@@ -51,36 +48,14 @@ function grabData () {
   }
 }
 
-grabData();
-
 $(".saveBtn").on("click", saveToLocal)
 
-
-
-
-//local.storage set time as key and value as textarea text (setItem)
 function fadeText() {
-
 $("#savedEvent").removeClass("hide")
-  // event.preventDefault();
+var timeDelay = 2000;
+setTimeout(function() {
+  $("#savedEvent").addClass("hide")
+}, timeDelay);
 }
 $(".saveBtn").on("click", fadeText)
-
-//function for updating hour colors
-//grab current hour with moment.js moment().hours() military time = currentTime
-//loop that goes through all time blocks and then run a condition statemnt to compare current hour to each time block
-//variable that stores that boocks hour by the time blocks id in the html military tim (Parse string to integer)
-
-//if (timeblock < currentTime) {
-//  add past class grey
-//} else if (timeblock ===curentTime) {
-//  remove class past and add present
-//} else {
-//  remove past and present and add future
-//}
-
-//function for loading task from local storage
-
-//textarea set the value to local.storage getItem('hour-9')
-
-//setInterval to run the fucntion of hourcolor updating function every 15-30 seconds
+grabData();
